@@ -2,13 +2,14 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/images.dart';
-import 'package:grocery_app/routes/routename.dart';
+
 import 'package:grocery_app/widgets/roundbutton.dart';
 
 import '../../constant/Strings.dart';
 
 class OnBoardOneView extends StatelessWidget {
-  const OnBoardOneView({super.key});
+  final PageController pageController;
+  const OnBoardOneView({super.key, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,11 @@ class OnBoardOneView extends StatelessWidget {
                       child: DotsIndicator(
                         dotsCount: 2,
                         position: 0,
+                        onTap: (position) {
+                          pageController.animateToPage(position,
+                              duration: const Duration(milliseconds: 200),
+                              curve: Curves.ease);
+                        },
                         decorator: DotsDecorator(
                           activeSize: const Size(59.0, 7.0),
                           activeColor: Colors.white,
@@ -67,7 +73,9 @@ class OnBoardOneView extends StatelessWidget {
               child: CustomButton(
                 title: 'Get Started',
                 onTap: () {
-                  Navigator.pushNamed(context, RouteName.onboard2);
+                  pageController.nextPage(
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.ease);
                 },
               ),
             )
