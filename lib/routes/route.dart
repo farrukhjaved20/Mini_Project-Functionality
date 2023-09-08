@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/SplashPages/splashscreen_view.dart';
+import 'package:grocery_app/View/home_view.dart';
 
 import 'package:grocery_app/routes/routename.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RouteName.splashScreen:
+      case RouteName.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) => const HomeScreen(),
         );
-
+      // case RouteName.homeScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => const HomeScreen(),
+      //   );
       default:
         return MaterialPageRoute(builder: (context) {
           return const Scaffold(
