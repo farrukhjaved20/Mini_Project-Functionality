@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/images.dart';
+import 'package:grocery_app/routes/routename.dart';
 import 'package:grocery_app/widgets/roundbutton.dart';
 
 import '../../constant/Strings.dart';
@@ -71,7 +72,9 @@ class OnBoardTwoView extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 50.0, left: 80, bottom: 10),
                 child: CustomButton(
                   title: 'Get Started',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteName.homeView);
+                  },
                 ),
               )
             ]));

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/constant/Colors.dart';
+import 'package:grocery_app/Services/functionality.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -9,15 +9,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int pageindex = 0;
-  //List<Widget> pages = <Widget>[];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      pageindex = index;
-    });
-  }
-
+  Functionality functionality = Functionality();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,10 +42,14 @@ class _HomeViewState extends State<HomeView> {
             ),
           ],
           type: BottomNavigationBarType.fixed,
-          currentIndex: pageindex,
+          currentIndex: functionality.currentIndex,
           selectedItemColor: Colors.black,
           iconSize: 30,
-          onTap: _onItemTapped,
+          onTap: (value) {
+            setState(() {
+              functionality.onItemTapped(value);
+            });
+          },
           elevation: 5),
     );
   }
