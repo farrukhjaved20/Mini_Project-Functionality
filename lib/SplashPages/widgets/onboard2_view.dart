@@ -7,8 +7,8 @@ import 'package:grocery_app/widgets/roundbutton.dart';
 import '../../constant/Strings.dart';
 
 class OnBoardTwoView extends StatelessWidget {
-  final PageController pageController;
-  const OnBoardTwoView({super.key, required this.pageController});
+  final PageController? pageController;
+  const OnBoardTwoView({super.key, this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class OnBoardTwoView extends StatelessWidget {
                           dotsCount: 2,
                           position: 1,
                           onTap: (position) {
-                            pageController.animateToPage(0,
+                            pageController!.animateToPage(0,
                                 duration: const Duration(milliseconds: 200),
                                 curve: Curves.ease);
                           },

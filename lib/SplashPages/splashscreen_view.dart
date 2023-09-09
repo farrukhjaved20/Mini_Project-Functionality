@@ -13,14 +13,14 @@ class _SplashScreenState extends State<SplashScreen> {
   final controller = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-          controller: controller,
-          scrollDirection: Axis.horizontal,
-          children: [
-            OnBoardOneView(pageController: controller),
-            OnBoardTwoView(pageController: controller,)
-          ]),
-    );
+    return PageView(
+        controller: controller,
+        scrollDirection: Axis.horizontal,
+        children: [
+          OnBoardOneView(pageController: controller),
+          OnBoardTwoView(
+            pageController: controller,
+          )
+        ]);
   }
 }

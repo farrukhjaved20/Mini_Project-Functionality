@@ -8,8 +8,8 @@ import 'package:grocery_app/widgets/roundbutton.dart';
 import '../../constant/Strings.dart';
 
 class OnBoardOneView extends StatelessWidget {
-  final PageController pageController;
-  const OnBoardOneView({super.key, required this.pageController});
+  final PageController? pageController;
+  const OnBoardOneView({super.key, this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class OnBoardOneView extends StatelessWidget {
                         dotsCount: 2,
                         position: 0,
                         onTap: (position) {
-                          pageController.animateToPage(position,
+                          pageController!.animateToPage(position,
                               duration: const Duration(milliseconds: 200),
                               curve: Curves.ease);
                         },
@@ -73,7 +73,7 @@ class OnBoardOneView extends StatelessWidget {
               child: CustomButton(
                 title: 'Get Started',
                 onTap: () {
-                  pageController.nextPage(
+                  pageController!.nextPage(
                       duration: const Duration(milliseconds: 200),
                       curve: Curves.ease);
                 },
