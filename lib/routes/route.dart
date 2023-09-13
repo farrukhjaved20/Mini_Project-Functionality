@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/SplashPages/splashscreen_view.dart';
-import 'package:grocery_app/View/Home/home_view.dart';
+import 'package:grocery_app/View/Home_Screen/home_view.dart';
 
 import 'package:grocery_app/routes/routename.dart';
 
