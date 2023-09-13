@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Services/functionality.dart';
+
+import 'package:grocery_app/View/Home_Screen/Widget/home_widgets.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/strings.dart';
 
@@ -11,7 +12,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  Functionality functionality = Functionality();
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -98,97 +98,9 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 150,
-                    width: 300,
-                    child: Card(
-                      color: MyColors.goldenColor,
-                      clipBehavior: Clip.antiAlias,
-                      shape: const ContinuousRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(40))),
-                      child: Center(
-                          child: Text(
-                        'Get\n50% OFF\nOn First 3 Order',
-                        style: ManropeFont.getSemiStyle(
-                            fontSize: 22, color: Colors.white),
-                      )),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 150,
-                    width: 300,
-                    child: Card(
-                      color: const Color.fromARGB(255, 177, 160, 111),
-                      clipBehavior: Clip.antiAlias,
-                      shape: const ContinuousRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(40))),
-                      child: Center(
-                          child: Text(
-                        'Get\n30% OFF\nOn First 2 Order',
-                        style: ManropeFont.getSemiStyle(
-                            fontSize: 22, color: Colors.white),
-                      )),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  'Recommended',
-                  style: ManropeFont.getRegularStyle(
-                    fontSize: 30,
-                  ),
-                ),
-              ),
-            )
-            
+            const HomeWidgets()
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
-                ),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.shopping_cart_outlined,
-                ),
-                label: 'Categories',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.favorite,
-                ),
-                label: 'Favourites',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.more_horiz_sharp,
-                ),
-                label: 'Profile',
-              ),
-            ],
-            type: BottomNavigationBarType.fixed,
-            currentIndex: functionality.currentIndex,
-            selectedItemColor: Colors.black,
-            iconSize: 30,
-            onTap: (value) {
-              setState(() {
-                functionality.onItemTapped(value);
-              });
-            },
-            elevation: 5),
       ),
     );
   }

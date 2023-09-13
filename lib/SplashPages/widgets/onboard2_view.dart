@@ -73,7 +73,7 @@ class OnBoardTwoView extends StatelessWidget {
                 child: CustomButton(
                   title: 'Get Started',
                   onTap: () {
-                    Navigator.pushNamed(context, RouteName.homeView);
+                    Navigator.pushNamed(context, RouteName.customBottom);
                   },
                 ),
               )
