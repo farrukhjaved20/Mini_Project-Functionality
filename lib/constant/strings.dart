@@ -77,4 +77,34 @@ class ManropeFont {
       color: color,
     );
   }
+
+  static TextStyle getLightStyle({
+    FontWeight fontWeight = FontWeight.w300,
+    FontStyle fontStyle = FontStyle.normal,
+    double fontSize = 14.0,
+    Color color = Colors.black,
+  }) {
+    return TextStyle(
+      fontFamily: family,
+      fontWeight: fontWeight,
+      fontStyle: fontStyle,
+      fontSize: fontSize,
+      color: color,
+    );
+  }
+
+  static TextStyle getMediumBoldStyle({
+    FontWeight fontWeight = FontWeight.w800,
+    FontStyle fontStyle = FontStyle.normal,
+    double fontSize = 14.0,
+    Color color = Colors.black,
+  }) {
+    return TextStyle(
+      fontFamily: family,
+      fontWeight: fontWeight,
+      fontStyle: fontStyle,
+      fontSize: fontSize,
+      color: color,
+    );
+  }
 }

@@ -11,13 +11,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
+        initialRoute: RouteName.customBottom,
+        onGenerateRoute: Routes.generateRoute,
       ),
-      initialRoute: RouteName.splashScreen,
-      onGenerateRoute: Routes.generateRoute,
     );
   }
 }

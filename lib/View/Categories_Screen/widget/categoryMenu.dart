@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/listdata.dart';
-import 'package:grocery_app/constant/Colors.dart';
-import 'package:grocery_app/constant/Strings.dart';
-import 'package:grocery_app/routes/routename.dart';
+import 'package:grocery_app/constant/colors.dart';
+import 'package:grocery_app/constant/strings.dart';
 
-class CategoriesView extends StatelessWidget {
-  const CategoriesView({super.key});
+class CategoryMenuScreen extends StatelessWidget {
+  const CategoryMenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,35 +54,6 @@ class CategoriesView extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          child: GridView.builder(
-            itemCount: foodData[1]['Category'].length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 10, crossAxisCount: 2),
-            itemBuilder: (context, index) {
-              return Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteName.categoryMenu);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  foodData[1]['Category'][index]['image'])),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(foodData[1]['Category'][index]['name']),
-                        ],
-                      ),
-                    ),
-                  ));
-            },
-          ),
-        )
       ]),
     );
   }

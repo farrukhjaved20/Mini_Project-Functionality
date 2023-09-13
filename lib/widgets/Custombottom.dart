@@ -13,18 +13,20 @@ class CustomBottom extends StatefulWidget {
 }
 
 class _CustomBottomState extends State<CustomBottom> {
-  int currentIndex = 0;
-  final List<Widget> pages = [
-    const HomeView(),
-    const CategoriesView(),
-    const FavouriteView(),
-    const LogoutView()
-  ];
   Functionality functionality = Functionality();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[functionality.currentIndex],
+      body: IndexedStack(
+        index: functionality.currentIndex,
+        children: const [
+          HomeView(),
+          CategoriesView(),
+          FavouriteView(),
+          LogoutView(),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -61,6 +63,7 @@ class _CustomBottomState extends State<CustomBottom> {
             functionality.onItemTapped(value);
           });
         },
+        elevation: 5,
       ),
     );
   }
