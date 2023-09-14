@@ -3,18 +3,14 @@ import 'package:grocery_app/Model/favlist.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/Strings.dart';
 
-class FavouriteView extends StatefulWidget {
+class FavouriteView extends StatelessWidget {
   const FavouriteView({
     super.key,
   });
 
   @override
-  State<FavouriteView> createState() => _FavouriteViewState();
-}
-
-class _FavouriteViewState extends State<FavouriteView> {
-  @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -26,8 +22,7 @@ class _FavouriteViewState extends State<FavouriteView> {
         itemBuilder: (context, index) {
           return ListTile(
             title: SizedBox(
-              height: 50,
-              width: 10,
+              height: height * 0.05,
               child: Card(
                 shadowColor: MyColors.textgray,
                 elevation: 5,
