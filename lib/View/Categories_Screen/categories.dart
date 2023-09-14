@@ -74,7 +74,7 @@ class CategoriesView extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => CategoryMenuScreen(
-                                categoryItems: foodData[1]['Category'][index]
+                                items: foodData[1]['Category'][index]
                                     ['items'],
                               ),
                             ));

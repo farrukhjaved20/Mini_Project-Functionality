@@ -66,6 +66,7 @@ class _CustomBottomState extends State<CustomBottom> {
             functionality.onItemTapped(value);
           });
         },
+        
       ),
     );
   }
