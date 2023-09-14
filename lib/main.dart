@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          appBarTheme: const AppBarTheme(centerTitle: true),
           useMaterial3: true,
         ),
         initialRoute: RouteName.customBottom,

@@ -17,7 +17,7 @@ class Routes {
         );
       case RouteName.categoryMenu:
         return MaterialPageRoute(
-          builder: (context) => const CategoryMenuScreen(),
+          builder: (context) => const CategoryMenuScreen(categoryItems: []),
         );
       default:
         return MaterialPageRoute(builder: (context) {

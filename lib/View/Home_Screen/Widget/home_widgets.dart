@@ -157,6 +157,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
+                mainAxisSpacing: 10,
                 mainAxisExtent: 250,
               ),
               itemBuilder: (context, index) {

@@ -1,60 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/constant/colors.dart';
-import 'package:grocery_app/constant/strings.dart';
 
 class CategoryMenuScreen extends StatelessWidget {
-  const CategoryMenuScreen({super.key});
+  final List categoryItems;
+
+  const CategoryMenuScreen({super.key, required this.categoryItems});
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Column(children: [
-        Container(
-          height: height * 0.25,
-          width: width * 1,
-          color: MyColors.primaryColor,
-          child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Hey,Halal',
-                        style: ManropeFont.getSemiStyle(
-                            fontSize: 22, color: Colors.white)),
-                    const Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 30.0),
-                          child: Icon(Icons.search, color: Colors.white),
-                        ),
-                        Icon(
-                          Icons.shopping_bag,
-                          color: Colors.white,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                Text(
-                  'Shop',
-                  style: ManropeFont.getLightStyle(
-                      fontSize: 50, color: Colors.white),
-                ),
-                Text(
-                  'By Category',
-                  style: ManropeFont.getMediumBoldStyle(
-                      fontSize: 50, color: Colors.white),
-                )
-              ],
+      appBar: AppBar(
+        title: const Text('Menu'),
+      ),
+      body: ListView.builder(
+        itemCount: categoryItems.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(categoryItems[index]['name']),
+            subtitle: Text('Price: \$${categoryItems[index]['price']}'),
+            trailing: TextButton(
+              onPressed: () {},
+              child: const Text('Add to Cart'),
             ),
-          ),
-        ),
-      ]),
+          );
+        },
+      ),
     );
   }
 }

@@ -14,21 +14,24 @@ class CustomBottom extends StatefulWidget {
 
 class _CustomBottomState extends State<CustomBottom> {
   Functionality functionality = Functionality();
-
+  Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
+    0: GlobalKey<NavigatorState>(),
+    1: GlobalKey<NavigatorState>(),
+    2: GlobalKey<NavigatorState>(),
+    3: GlobalKey<NavigatorState>(),
+  };
+  final List<Widget> pages = [
+    const HomeView(),
+    const CategoriesView(),
+    const FavouriteView(),
+    const LogoutView(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: functionality.currentIndex,
-        children: const [
-          HomeView(),
-          CategoriesView(),
-          FavouriteView(),
-          LogoutView(),
-        ],
-      ),
+      body: buildNavigator(),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,
@@ -63,8 +66,17 @@ class _CustomBottomState extends State<CustomBottom> {
             functionality.onItemTapped(value);
           });
         },
-        elevation: 5,
       ),
+    );
+  }
+
+  buildNavigator() {
+    return Navigator(
+      key: navigatorKeys[functionality.currentIndex],
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(
+            builder: (context) => pages.elementAt(functionality.currentIndex));
+      },
     );
   }
 }

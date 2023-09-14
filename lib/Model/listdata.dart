@@ -35,23 +35,38 @@ List<Map<String, dynamic>> foodData = [
       },
     ]
   },
+
+  ///index ==1
   {
     'Category': [
       {
         'name': 'Rice',
         'image':
-            'https://cdn.britannica.com/17/176517-050-6F2B774A/Pile-uncooked-rice-grains-Oryza-sativa.jpg'
+            'https://cdn.britannica.com/17/176517-050-6F2B774A/Pile-uncooked-rice-grains-Oryza-sativa.jpg',
+        'items': [
+          {'name': 'Chicken Biryani', 'price': 200},
+          {'name': 'Beef Biryani', 'price': 180}
+        ],
       },
       {
         'name': 'Burgers',
         'image':
-            'https://media.istockphoto.com/id/1206323282/photo/juicy-hamburger-on-white-background.jpg?s=612x612&w=0&k=20&c=K0DxyiChLwewXcCy8aLjjOqkc8QXPgQMAW-vwRCzqG4='
+            'https://media.istockphoto.com/id/1206323282/photo/juicy-hamburger-on-white-background.jpg?s=612x612&w=0&k=20&c=K0DxyiChLwewXcCy8aLjjOqkc8QXPgQMAW-vwRCzqG4=',
+        'items': [
+          {'name': 'Zinger Burger', 'price': 200},
+          {'name': 'Zinger Burger With Cheese', 'price': 220},
+        ],
       },
       {
         'name': 'Drinks',
         'image':
-            'https://www.aahaarexpert.com/wp-content/uploads/2018/04/what-are-the-harmful-effects-of-cold-drinks.png'
-      }
-    ]
+            'https://www.aahaarexpert.com/wp-content/uploads/2018/04/what-are-the-harmful-effects-of-cold-drinks.png',
+        'items': [
+          {'name': 'Coke', 'price': 100},
+          {'name': 'Mirinda', 'price': 100},
+          {'name': '7up', 'price': 100},
+        ],
+      },
+    ],
   }
 ];
