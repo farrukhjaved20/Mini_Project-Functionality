@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(centerTitle: true),
           useMaterial3: true,
         ),
-        initialRoute: RouteName.splashScreen,
+        initialRoute: RouteName.customBottom,
         onGenerateRoute: Routes.generateRoute,
       ),
     );

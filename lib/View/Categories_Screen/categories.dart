@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Model/cartitems.dart';
 import 'package:grocery_app/Model/listdata.dart';
+import 'package:grocery_app/View/Categories_Screen/widget/cartscreen.dart';
 import 'package:grocery_app/View/Categories_Screen/widget/categoryMenu.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/Strings.dart';
 
-class CategoriesView extends StatelessWidget {
+class CategoriesView extends StatefulWidget {
   const CategoriesView({super.key});
 
+  @override
+  State<CategoriesView> createState() => _CategoriesViewState();
+}
+
+class _CategoriesViewState extends State<CategoriesView> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -16,7 +23,7 @@ class CategoriesView extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: height * 0.25,
+            height: height * 0.26,
             width: width * 1,
             color: MyColors.primaryColor,
             child: Padding(
@@ -32,15 +39,29 @@ class CategoriesView extends StatelessWidget {
                         style: ManropeFont.getSemiStyle(
                             fontSize: 22, color: Colors.white),
                       ),
-                      const Row(
+                      Row(
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(right: 30.0),
                             child: Icon(Icons.search, color: Colors.white),
                           ),
-                          Icon(
-                            Icons.shopping_bag,
-                            color: Colors.white,
+                          Badge(
+                            label: Text(cartItems.length.toString()),
+                            child: IconButton(
+                              onPressed: () async {
+                                await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const CartScreen(),
+                                    ));
+                                setState(() {});
+                              },
+                              icon: const Icon(
+                                Icons.shopping_bag,
+                                color: Colors.white,
+                                size: 30,
+                              ),
+                            ),
                           ),
                         ],
                       )
@@ -69,15 +90,15 @@ class CategoriesView extends StatelessWidget {
                 return Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
+                      onTap: () async {
+                        await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => CategoryMenuScreen(
-                                items: foodData[1]['Category'][index]
-                                    ['items'],
+                                items: foodData[1]['Category'][index]['items'],
                               ),
                             ));
+                        setState(() {});
                       },
                       child: Container(
                         decoration: BoxDecoration(

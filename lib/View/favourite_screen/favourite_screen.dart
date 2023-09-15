@@ -10,32 +10,37 @@ class FavouriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+   
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        automaticallyImplyLeading: false,
+        title: Text(
           'Favourite Items',
+          style: TextStyle(color: MyColors.secondaryColor),
         ),
       ),
       body: ListView.builder(
         itemCount: FavouriteList.FavItem.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: SizedBox(
-              height: height * 0.05,
-              child: Card(
-                shadowColor: MyColors.textgray,
-                elevation: 5,
-                shape: ContinuousRectangleBorder(
-                    borderRadius: BorderRadius.circular(5)),
-                child: Center(
-                    child: Text(
-                  FavouriteList.FavItem[index]['name'],
-                  style: ManropeFont.getMediumBoldStyle(
-                      color: Colors.red, fontSize: 24),
-                )),
-              ),
+            title: Text(
+              FavouriteList.FavItem[index]['name'],
+              style: ManropeFont.getMediumBoldStyle(
+                  color: MyColors.primaryColor, fontSize: 24),
             ),
+            trailing: Container(
+                width: width * 0.2,
+                margin: const EdgeInsets.all(2.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: MyColors.goldenColor,
+                  image: DecorationImage(
+                      image: NetworkImage(
+                        FavouriteList.FavItem[index]['image'],
+                      ),
+                      fit: BoxFit.fill),
+                )),
           );
         },
       ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Model/cartitems.dart';
 
 import 'package:grocery_app/Model/favlist.dart';
 import 'package:grocery_app/Model/listdata.dart';
+import 'package:grocery_app/View/Categories_Screen/widget/cartscreen.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/Strings.dart';
 
@@ -34,9 +36,23 @@ class _HomeViewState extends State<HomeView> {
                     Text('Hey,Halal',
                         style: ManropeFont.getSemiStyle(
                             fontSize: 22, color: Colors.white)),
-                    const Icon(
-                      Icons.shopping_bag,
-                      color: Colors.white,
+                    Badge(
+                      label: Text(cartItems.length.toString()),
+                      child: IconButton(
+                        onPressed: () async {
+                          await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CartScreen(),
+                              ));
+                          setState(() {});
+                        },
+                        icon: const Icon(
+                          Icons.shopping_bag,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -44,7 +60,7 @@ class _HomeViewState extends State<HomeView> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 30.0),
                     child: Container(
-                        height: 50,
+                        height: height * 0.05,
                         width: width * 0.7,
                         decoration: BoxDecoration(
                             color: MyColors.secondaryColor,
@@ -105,8 +121,8 @@ class _HomeViewState extends State<HomeView> {
             child: Row(
               children: [
                 SizedBox(
-                  height: 150,
-                  width: 300,
+                  height: height * 0.15,
+                  width: width * 0.8,
                   child: Card(
                     color: MyColors.goldenColor,
                     clipBehavior: Clip.antiAlias,
@@ -121,8 +137,8 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                 SizedBox(
-                  height: 150,
-                  width: 300,
+                  height: height * 0.15,
+                  width: width * 0.8,
                   child: Card(
                     color: const Color.fromARGB(255, 177, 160, 111),
                     clipBehavior: Clip.antiAlias,
@@ -165,10 +181,13 @@ class _HomeViewState extends State<HomeView> {
             itemBuilder: (context, index) {
               return Column(
                 children: [
-                  Image.network(
-                    foodData[0]['Recommended'][index]['image'],
-                    height: 190,
-                    width: 500,
+                  Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(
+                                foodData[0]['Recommended'][index]['image'])),
+                        borderRadius: BorderRadius.circular(40)),
                   ),
                   Text(foodData[0]['Recommended'][index]['name']),
                   Text(foodData[0]['Recommended'][index]['category']),
