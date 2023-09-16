@@ -23,7 +23,7 @@ class _CategoriesViewState extends State<CategoriesView> {
       body: Column(
         children: [
           Container(
-            height: height * 0.26,
+            height: height * 0.28,
             width: width * 1,
             color: MyColors.primaryColor,
             child: Padding(

@@ -25,14 +25,17 @@ class _CategoryMenuScreenState extends State<CategoryMenuScreen> {
             subtitle: Text('Price: \$${widget.items[index]['price']}'),
             trailing: TextButton(
               onPressed: () async {
-                if (cartItems.contains(widget.items[index])) {
+                if (cartItems.any((CartItems) =>
+                    CartItems.name == widget.items[index]['name'])) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Item already in cart'),
                     ),
                   );
                 } else {
-                  cartItems.add(widget.items[index]);
+                  cartItems.add(CartItem(
+                      name: widget.items[index]['name'],
+                      price: widget.items[index]['price'].toDouble()));
                 }
 
                 setState(() {});
