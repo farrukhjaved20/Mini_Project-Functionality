@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/cartitems.dart';
+import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/strings.dart';
 
 class CartScreen extends StatefulWidget {
@@ -13,11 +14,25 @@ class _CartScreenState extends State<CartScreen> {
   double totalAmount = 0.0;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    totalamount();
+  }
+
+  void totalamount() {
+    totalAmount = 0.0;
+    for (var money in cartItems) {
+      totalAmount += money['price'] * money['quantity'];
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           title: cartItems.isEmpty
-              ? const Text('No Data')
+              ? const Text('No Items In The Cart')
               : const Text('Cart Screen')),
       body: cartItems.isEmpty
           ? const Center(child: CircularProgressIndicator())
@@ -38,6 +53,7 @@ class _CartScreenState extends State<CartScreen> {
                             if (cartItems[index]['quantity'] == 0) {
                               cartItems.removeAt(index);
                             }
+                            totalamount();
                             setState(() {});
                           }
                         },
@@ -48,9 +64,9 @@ class _CartScreenState extends State<CartScreen> {
                         onPressed: () {
                           setState(() {
                             if (cartItems[index]['quantity'] != 0) {
-                              setState(() {
-                                cartItems[index]['quantity']++;
-                              });
+                              cartItems[index]['quantity']++;
+                              totalamount();
+                              setState(() {});
                             }
                           });
                         },
@@ -62,13 +78,16 @@ class _CartScreenState extends State<CartScreen> {
             ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          padding: const EdgeInsets.only(bottom: 30.0, left: 20, right: 30),
-          child: Align(
-            alignment: Alignment.bottomRight,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: MyColors.goldenColor),
+          child: Center(
             child: Text(
-              'Total: \$${totalAmount.toStringAsFixed(2)}', // Format the total amount
-              style:
-                  const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              'Total: \$${totalAmount.toStringAsFixed(2)}',
+              style: ManropeFont.getMediumStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 23,
+                  color: MyColors.primaryColor),
             ),
           ),
         ),
