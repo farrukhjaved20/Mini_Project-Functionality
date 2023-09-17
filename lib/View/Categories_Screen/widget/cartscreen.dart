@@ -10,6 +10,8 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  double totalAmount = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,34 +24,34 @@ class _CartScreenState extends State<CartScreen> {
           : ListView.builder(
               itemCount: cartItems.length,
               itemBuilder: (context, index) {
-                cartItems[index];
                 return ListTile(
-                  title: Text(cartItems[index].name),
-                  subtitle: Text(
-                      'Price: \$${cartItems[index].price.toStringAsFixed(2)}'),
+                  title: Text(cartItems[index]['name']),
+                  subtitle: Text('Price: \$${cartItems[index]['price']}'),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
                         icon: const Icon(Icons.remove),
                         onPressed: () {
-                          if (cartItems[index].quantity > 1) {
-                            setState(() {
-                              cartItems[index].quantity--;
-                            });
-                          } else {
-                            setState(() {
+                          if (cartItems[index]['quantity'] != 0) {
+                            cartItems[index]['quantity']--;
+                            if (cartItems[index]['quantity'] == 0) {
                               cartItems.removeAt(index);
-                            });
+                            }
+                            setState(() {});
                           }
                         },
                       ),
-                      Text(cartItems[index].quantity.toString()),
+                      Text(cartItems[index]['quantity'].toString()),
                       IconButton(
                         icon: const Icon(Icons.add),
                         onPressed: () {
                           setState(() {
-                            cartItems[index].quantity++;
+                            if (cartItems[index]['quantity'] != 0) {
+                              setState(() {
+                                cartItems[index]['quantity']++;
+                              });
+                            }
                           });
                         },
                       ),
@@ -58,6 +60,19 @@ class _CartScreenState extends State<CartScreen> {
                 );
               },
             ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          padding: const EdgeInsets.only(bottom: 30.0, left: 20, right: 30),
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: Text(
+              'Total: \$${totalAmount.toStringAsFixed(2)}', // Format the total amount
+              style:
+                  const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
