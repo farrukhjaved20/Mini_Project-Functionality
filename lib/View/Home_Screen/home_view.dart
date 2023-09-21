@@ -6,6 +6,7 @@ import 'package:grocery_app/Model/listdata.dart';
 import 'package:grocery_app/View/Categories_Screen/widget/cartscreen.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/Strings.dart';
+import 'package:grocery_app/routes/routename.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -40,11 +41,8 @@ class _HomeViewState extends State<HomeView> {
                       label: Text(cartItems.length.toString()),
                       child: IconButton(
                         onPressed: () async {
-                          await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const CartScreen(),
-                              ));
+                          await Navigator.pushNamed(
+                              context, RouteName.cartScreen);
                           setState(() {});
                         },
                         icon: const Icon(
@@ -122,34 +120,68 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 SizedBox(
                   height: height * 0.15,
-                  width: width * 0.8,
+                  width: width * 0.95,
                   child: Card(
                     color: MyColors.goldenColor,
                     clipBehavior: Clip.antiAlias,
                     shape: const ContinuousRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(40))),
-                    child: Center(
-                        child: Text(
-                      'Get\n50% OFF\nOn First 3 Order',
-                      style: ManropeFont.getSemiStyle(
-                          fontSize: 22, color: Colors.white),
-                    )),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: height * 0.15,
+                          width: width * 0.49,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(
+                                      'https://t3.ftcdn.net/jpg/01/99/21/14/360_F_199211488_Qa6BvQJV2Q8BY6b4jP4Yk0k8Zlo0GN1X.jpg')),
+                              shape: BoxShape.rectangle),
+                        ),
+                        SizedBox(
+                          width: width * 0.02,
+                        ),
+                        Center(
+                            child: Text(
+                          'Get\n50% OFF\nOn First 3 Order',
+                          style: ManropeFont.getSemiStyle(
+                              fontSize: 22, color: Colors.white),
+                        )),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: height * 0.15,
-                  width: width * 0.8,
+                  width: width * 0.95,
                   child: Card(
                     color: const Color.fromARGB(255, 177, 160, 111),
                     clipBehavior: Clip.antiAlias,
                     shape: const ContinuousRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(40))),
-                    child: Center(
-                        child: Text(
-                      'Get\n30% OFF\nOn First 2 Order',
-                      style: ManropeFont.getSemiStyle(
-                          fontSize: 22, color: Colors.white),
-                    )),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: height * 0.15,
+                          width: width * 0.49,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(
+                                      'https://static.vecteezy.com/system/resources/previews/005/412/355/non_2x/big-sale-up-to-30-percent-off-all-sale-styles-in-stores-and-online-special-offer-sale-30-percent-number-tag-voucher-illustration-free-vector.jpg'))),
+                        ),
+                        SizedBox(
+                          width: width * 0.02,
+                        ),
+                        Center(
+                            child: Text(
+                          'Get\n30% OFF\nOn First 2 Order',
+                          style: ManropeFont.getSemiStyle(
+                              fontSize: 22, color: Colors.white),
+                        )),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -182,11 +214,13 @@ class _HomeViewState extends State<HomeView> {
               return Column(
                 children: [
                   Container(
-                    height: 200,
+                    height: height * 0.2,
+                    width: width * 0.9,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(
-                                foodData[0]['Recommended'][index]['image'])),
+                                foodData[0]['Recommended'][index]['image']),
+                            fit: BoxFit.cover),
                         borderRadius: BorderRadius.circular(40)),
                   ),
                   Text(foodData[0]['Recommended'][index]['name']),

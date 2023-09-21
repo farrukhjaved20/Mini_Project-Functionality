@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/cartitems.dart';
+import 'package:grocery_app/constant/colors.dart';
 
 class CategoryMenuScreen extends StatefulWidget {
   final List items;
@@ -15,7 +16,7 @@ class _CategoryMenuScreenState extends State<CategoryMenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Menu'),
+        title: const Text("Cart's Menu"),
       ),
       body: ListView.builder(
         itemCount: widget.items.length,
@@ -23,7 +24,7 @@ class _CategoryMenuScreenState extends State<CategoryMenuScreen> {
           return ListTile(
             title: Text(widget.items[index]['name']),
             subtitle: Text('Price: \$${widget.items[index]['price']}'),
-            trailing: TextButton(
+            trailing: IconButton(
               onPressed: () async {
                 if (cartItems.contains(widget.items[index])) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -37,7 +38,11 @@ class _CategoryMenuScreenState extends State<CategoryMenuScreen> {
 
                 setState(() {});
               },
-              child: const Text('Add to Cart'),
+              icon: Icon(
+                Icons.add,
+                color: MyColors.primaryColor,
+                size: 30,
+              ),
             ),
           );
         },

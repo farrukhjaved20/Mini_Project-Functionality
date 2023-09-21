@@ -3,8 +3,15 @@ import 'package:grocery_app/constant/Strings.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;
+  final Color? color;
+  final IconData? icon;
   final Function()? onTap;
-  const CustomButton({super.key, required this.title, this.onTap});
+  const CustomButton(
+      {super.key,
+      required this.title,
+      this.onTap,
+      this.icon,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,7 @@ class CustomButton extends StatelessWidget {
         height: height * 0.08,
         width: width * 0.6,
         decoration: ShapeDecoration(
-            color: Colors.white,
+            color: color,
             shape: ContinuousRectangleBorder(
               borderRadius: BorderRadius.circular(40),
             )),
@@ -28,10 +35,7 @@ class CustomButton extends StatelessWidget {
               title,
               style: ManropeFont.getSemiStyle(fontSize: 17),
             ),
-            const Icon(
-              Icons.arrow_forward,
-              size: 28,
-            )
+            Icon(icon)
           ],
         )),
       ),

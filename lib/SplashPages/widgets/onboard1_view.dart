@@ -71,6 +71,8 @@ class OnBoardOneView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 50.0, left: 80, bottom: 10),
               child: CustomButton(
+                color: Colors.white,
+                icon: Icons.arrow_forward_rounded,
                 title: 'Get Started',
                 onTap: () {
                   pageController!.nextPage(

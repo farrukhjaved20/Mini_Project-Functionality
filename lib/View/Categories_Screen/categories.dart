@@ -5,6 +5,7 @@ import 'package:grocery_app/View/Categories_Screen/widget/cartscreen.dart';
 import 'package:grocery_app/View/Categories_Screen/widget/categoryMenu.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/Strings.dart';
+import 'package:grocery_app/routes/routename.dart';
 
 class CategoriesView extends StatefulWidget {
   const CategoriesView({super.key});
@@ -49,11 +50,14 @@ class _CategoriesViewState extends State<CategoriesView> {
                             label: Text(cartItems.length.toString()),
                             child: IconButton(
                               onPressed: () async {
-                                await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const CartScreen(),
-                                    ));
+                                // await Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => const CartScreen(),
+                                //     ));
+
+                                await Navigator.pushNamed(
+                                    context, RouteName.cartScreen);
                                 setState(() {});
                               },
                               icon: const Icon(

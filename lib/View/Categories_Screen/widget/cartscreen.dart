@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/cartitems.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/strings.dart';
+import 'package:grocery_app/routes/routename.dart';
+import 'package:grocery_app/widgets/roundbutton.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -29,6 +31,7 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
           title: cartItems.isEmpty
@@ -77,19 +80,32 @@ class _CartScreenState extends State<CartScreen> {
               },
             ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: MyColors.goldenColor),
-          child: Center(
-            child: Text(
-              'Total: \$${totalAmount.toStringAsFixed(2)}',
-              style: ManropeFont.getMediumStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 23,
-                  color: MyColors.primaryColor),
+        color: Colors.white70,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomButton(
+              title: 'Check Out',
+              color: Colors.white70,
+              icon: Icons.shopping_cart_checkout_sharp,
+              onTap: () {
+                Navigator.pushNamed(context, RouteName.checkout);
+              },
             ),
-          ),
+            SizedBox(
+              width: width * 0.09,
+            ),
+            Expanded(
+              flex: 1,
+              child: Text(
+                'Total: \$${totalAmount.toStringAsFixed(2)}',
+                style: ManropeFont.getMediumStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 19,
+                    color: MyColors.primaryColor),
+              ),
+            ),
+          ],
         ),
       ),
     );

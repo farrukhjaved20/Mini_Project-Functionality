@@ -71,6 +71,8 @@ class OnBoardTwoView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 50.0, left: 80, bottom: 10),
                 child: CustomButton(
+                  icon: Icons.arrow_forward_rounded,
+                  color: Colors.white,
                   title: 'Get Started',
                   onTap: () {
                     Navigator.pushNamed(context, RouteName.customBottom);

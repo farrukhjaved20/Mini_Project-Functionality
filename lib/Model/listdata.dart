@@ -31,7 +31,7 @@ List<Map<String, dynamic>> foodData = [
         'category': 'Organic',
         'price': '\$200',
         'image':
-            'https://bonmasala.com/wp-content/uploads/2022/11/Chicken-biriyani-recipe-scaled.webp'
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXS-9GsV8wQEdjTpZR-5-HZhpDrAuHM1A0Uw&usqp=CAU'
       },
     ]
   },
@@ -65,6 +65,8 @@ List<Map<String, dynamic>> foodData = [
           {'name': 'Coke', 'price': 100, 'quantity': 1},
           {'name': 'Mirinda', 'price': 100, 'quantity': 1},
           {'name': '7up', 'price': 100, 'quantity': 1},
+          {'name': 'Karak Chai', 'price': 10, 'quantity': 1},
+          {'name': 'Green Tea', 'price': 20, 'quantity': 1},
         ],
       },
     ],
