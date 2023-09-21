@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/cartitems.dart';
-
 import 'package:grocery_app/Model/favlist.dart';
 import 'package:grocery_app/Model/listdata.dart';
-import 'package:grocery_app/View/Categories_Screen/widget/cartscreen.dart';
 import 'package:grocery_app/constant/Colors.dart';
 import 'package:grocery_app/constant/Strings.dart';
 import 'package:grocery_app/routes/routename.dart';
