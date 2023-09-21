@@ -1,3 +1,3 @@
 class FavouriteList {
-  static List FavItem = [];
+  static List favItem = [];
 }

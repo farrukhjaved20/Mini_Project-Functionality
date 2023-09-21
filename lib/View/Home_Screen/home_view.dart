@@ -237,10 +237,10 @@ class _HomeViewState extends State<HomeView> {
                         onPressed: () async {
                           if (foodData[0]['Recommended'][index]['isFav'] ==
                               true) {
-                            FavouriteList.FavItem.remove(
+                            FavouriteList.favItem.remove(
                                 foodData[0]['Recommended'][index]);
                           } else {
-                            FavouriteList.FavItem.add(
+                            FavouriteList.favItem.add(
                                 foodData[0]['Recommended'][index]);
                           }
                           foodData[0]['Recommended'][index]['isFav'] =

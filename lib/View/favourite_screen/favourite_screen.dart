@@ -21,11 +21,11 @@ class FavouriteView extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        itemCount: FavouriteList.FavItem.length,
+        itemCount: FavouriteList.favItem.length,
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(
-              FavouriteList.FavItem[index]['name'],
+              FavouriteList.favItem[index]['name'],
               style: ManropeFont.getMediumBoldStyle(
                   color: MyColors.primaryColor, fontSize: 24),
             ),
@@ -37,7 +37,7 @@ class FavouriteView extends StatelessWidget {
                   color: MyColors.goldenColor,
                   image: DecorationImage(
                       image: NetworkImage(
-                        FavouriteList.FavItem[index]['image'],
+                        FavouriteList.favItem[index]['image'],
                       ),
                       fit: BoxFit.fill),
                 )),
